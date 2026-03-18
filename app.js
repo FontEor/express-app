@@ -1,12 +1,12 @@
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-const cors = require("cors"); // 处理跨域的中间件
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+require("module-alias/register");
 
-var app = express();
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan"); // 记录日志的中间件
+const cors = require("cors"); // 处理跨域的中间件
+const indexRouter = require("./routes/index");
+const app = express();
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -14,7 +14,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/api/v1", indexRouter);
 
 module.exports = app;
