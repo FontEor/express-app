@@ -14,13 +14,16 @@
       "^@/(.*)$": "<rootDir>/$1"
     },
     "testEnvironment": "node",
-    "testMatch": ["**/tests/**/*.test.js"]
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ]
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.6",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "express-validator": "^7.3.1",
     "module-alias": "^2.3.4",
     "mongoose": "^9.3.1",
     "morgan": "~1.9.1",
