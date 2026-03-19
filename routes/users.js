@@ -4,12 +4,15 @@ const { userController } = require('@/controller/index');
 
 /* GET users listing. */
 router.get('/', userController.getUsers);
-router.post('/', userController.registerUser);
-/* GET user by ID */
-router.get('/:id', userController.getUserById);
 
 /* POST create user */
 router.post('/', userController.createUser);
+
+/* POST register user */
+router.post('/register', userController.registerUser);
+
+/* GET user by ID */
+router.get('/:id', userController.getUserById);
 
 /* PUT update user */
 router.put('/:id', userController.updateUser);
