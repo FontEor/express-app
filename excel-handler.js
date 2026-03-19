@@ -29,7 +29,9 @@ for (let i = 0; i < data.length; i++) {
       for (let k = 1; k < newSubjects.length; k++) {
         data[i][j + k] = newSubjects[k];
       }
-      console.log(`\n在第 ${i + 1} 行第 ${j + 1} 列找到"语文"，已替换为: ${newSubjects.join('、')}`);
+      console.log(
+        `\n在第 ${i + 1} 行第 ${j + 1} 列找到"语文"，已替换为: ${newSubjects.join('、')}`
+      );
     }
   }
 }

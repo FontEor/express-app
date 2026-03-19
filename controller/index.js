@@ -1,5 +1,5 @@
-const userController = require("./usersController");
-const videoController = require("./videoController");
+const userController = require('./usersController');
+const videoController = require('./videoController');
 
 module.exports = {
   userController,

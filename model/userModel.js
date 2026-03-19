@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const userModel = {
   name: { type: String, required: true },
   age: { type: Number, required: true },
