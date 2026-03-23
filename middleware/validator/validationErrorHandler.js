@@ -1,4 +1,4 @@
-export const handleValidationErrors = (validations) => {
+const handleValidationErrors = (validations) => {
   return async (req, res, next) => {
     for (const validation of validations) {
       const result = await validation.run(req);
@@ -8,4 +8,8 @@ export const handleValidationErrors = (validations) => {
     }
     next();
   };
+};
+
+module.exports = {
+  handleValidationErrors,
 };

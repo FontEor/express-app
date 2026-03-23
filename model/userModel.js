@@ -9,4 +9,10 @@ const userModel = {
 };
 
 const userSchema = new mongoose.Schema(userModel);
+
+// Method to compare password
+userSchema.methods.comparePassword = function (password) {
+  return this.password === md5(password);
+};
+
 module.exports = userSchema;

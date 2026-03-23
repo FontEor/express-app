@@ -1,5 +1,6 @@
 const { User } = require('@/model/index');
 const jwt = require('@/utils/jwt');
+const md5 = require('@/utils/md5');
 const usersController = {
   registerUser: async (req, res) => {
     const userModel = new User(req.body);
@@ -64,7 +65,10 @@ const usersController = {
   loginUser: async (req, res) => {
     try {
       const { email, password } = req.body;
-      const user = await User.findOne({ email });
+      // Email is stored as MD5 hash, so we need to hash the input email for query
+      const hashedEmail = md5(email);
+      // Need to select password and email since they have select: false
+      const user = await User.findOne({ email: hashedEmail }).select('+email +password');
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
       }
