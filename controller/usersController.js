@@ -60,6 +60,22 @@ const usersController = {
       res.status(500).json({ error: error.message });
     }
   },
+  loginUser: async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      const user = await User.findOne({ email });
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      const isMatch = await user.comparePassword(password);
+      if (!isMatch) {
+        return res.status(401).json({ error: 'Invalid credentials' });
+      }
+      res.status(200).json({ message: 'Login successful' });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
 };
 
 module.exports = usersController;
