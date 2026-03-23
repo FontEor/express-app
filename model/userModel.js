@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const md5 = require('../utils/md5');
 const userModel = {
   name: { type: String, required: true },
   age: { type: Number, required: true },

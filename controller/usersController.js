@@ -1,4 +1,5 @@
 const { User } = require('@/model/index');
+const jwt = require('@/utils/jwt');
 const usersController = {
   registerUser: async (req, res) => {
     const userModel = new User(req.body);
@@ -71,7 +72,8 @@ const usersController = {
       if (!isMatch) {
         return res.status(401).json({ error: 'Invalid credentials' });
       }
-      res.status(200).json({ message: 'Login successful' });
+      const token = jwt.generateToken({ id: user._id, email: user.email });
+      res.status(200).json({ message: 'Login successful', token });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
